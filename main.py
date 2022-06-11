@@ -19,7 +19,7 @@ class Test:
         return wrap_func
 
     def __init__(self, initial_data_file):
-        with open("C:/Users/vnone/OneDrive/Документи/GitHub/CourseWork/" + initial_data_file) as f:
+        with open(initial_data_file) as f:
             self.R = list(map(int, f.readline().split(', ')))
             self.N = int(f.readline())
             self.average_time = np.zeros(shape=(len(self.R), 3))
