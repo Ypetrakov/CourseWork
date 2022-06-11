@@ -18,11 +18,13 @@ class Generator:
         k = int(1.25 * math.log2(n + 1))
         a = np.zeros(shape=(n + 1, k))
         c = np.zeros(shape=(n + 1, n + 1))
+        for i in range(0, n):
+            temp_state = np.zeros(shape=k)
+            while Generator.check_if_exist(temp_state, a):
+                for j in range(0, k):
+                    temp_state[j] = round(random.uniform(0, 1))
 
-        for i in range(0, k):
-            for j in range(0, n):
-                a[j][i] = round(random.uniform(0, 1))
-            a[n][i] = 0
+            a[i] = temp_state
 
         for i in range(0, n + 1):
             for j in range(0, n + 1):
@@ -33,6 +35,13 @@ class Generator:
                 else:
                     c[i][j] = 1
         return k, a, c
+
+    @staticmethod
+    def check_if_exist(array1, array2):
+        for element in array2:
+            if np.array_equal(element, array1):
+                return True
+        return False
 
 
 if __name__ == "__main__":
