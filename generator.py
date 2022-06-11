@@ -36,4 +36,4 @@ class Generator:
 
 
 if __name__ == "__main__":
-    Generator.generate_tusk(5)
+    print(Generator.generate_tusk(5)[1])
