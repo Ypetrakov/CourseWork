@@ -1,8 +1,8 @@
 import numpy as np
 from generator import generate_tusk
-from greed import greed_alg
-from aco import aco
-from branc_and_bound import branch_and_bound_alg
+from Algorithms.greed import greed_alg
+from Algorithms.aco import aco
+from Algorithms.branc_and_bound import branch_and_bound_alg
 from statistics import mean
 import timeit
 
