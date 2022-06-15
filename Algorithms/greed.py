@@ -19,10 +19,18 @@ class Greedy(Algorithm):
         x.append(i)
         # Add empty state in
         x.append(n)
-        return x
+        return x, self.evaluate(x, c)
+
+    @staticmethod
+    def evaluate(x, c):
+        sum = 0
+        for i in range(1, len(x)):
+            sum += c[x[i-1]][x[i]]
+        return sum
 
 
 if __name__ == '__main__':
     import generator
     task = generator.Generator.generate_task(5)
+    print(task[1])
     print(Greedy().solve(task[0], task[1]))
