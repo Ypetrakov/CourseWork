@@ -28,7 +28,7 @@ class Generator:
         a[n] = [0] * k
 
         c = Generator.get_c(a)
-        return k, a, c
+        return a, c
 
     """ 
     Create distance array C based off of ingredients table a

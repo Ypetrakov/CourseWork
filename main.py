@@ -1,6 +1,6 @@
 import numpy as np
 from generator import Generator
-from Algorithms.greed import greed_alg
+from Algorithms.greed import Greedy
 from Algorithms.aco import aco
 from Algorithms.branc_and_bound import branch_and_bound_alg
 from statistics import mean
@@ -31,8 +31,8 @@ class Test:
             time_iterations = np.zeros(shape=(3, self.N))
             z_iterations = np.zeros(shape=(3, self.N))
             for j in range(0, self.N):
-                k, a, c = Generator.generate_task(n)
-                z_iterations[0][j], time_iterations[0][j] = self.timer_func(greed_alg)()
+                a, c = Generator.generate_task(n)
+                z_iterations[0][j], time_iterations[0][j] = self.timer_func(Greedy().solve(a, c))()
                 z_iterations[1][j], time_iterations[1][j] = self.timer_func(branch_and_bound_alg)()
                 z_iterations[2][j], time_iterations[2][j] = self.timer_func(aco)()
             self.average_time[i] = [mean(time_iterations[0]), mean(time_iterations[0]), mean(time_iterations[0])]
