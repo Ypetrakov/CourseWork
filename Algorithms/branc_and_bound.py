@@ -54,20 +54,20 @@ class BranchAndBound(Algorithm):
             # You can't reduce a deleted row
             if h_temp == np.Inf:
                 h_temp = 0
-            h += h_temp
-            for j in range(0, len(m[0])):
-                m[i, j] -= h_temp
-
+            if h_temp != 0:
+                h += h_temp
+                for j in range(0, len(m[0])):
+                    m[i, j] -= h_temp
         # Column reduction
         for j in range(0, len(m[0])):
             h_temp = min(m[:, j])
             # You can't reduce a deleted column
             if h_temp == np.Inf:
                 h_temp = 0
-            h += h_temp
-            for i in range(0, len(m)):
-                m[i, j] -= h_temp
-
+            if h_temp != 0:
+                h += h_temp
+                for i in range(0, len(m)):
+                    m[i, j] -= h_temp
         return m, h
 
     @staticmethod

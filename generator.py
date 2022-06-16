@@ -34,7 +34,6 @@ class Generator:
     Create distance array C based off of ingredients table a
     Seperating it out will be useful for reading from files
     """
-
     @staticmethod
     def get_c(a):
         n = len(a) - 1
