@@ -2,13 +2,18 @@ import re
 
 import pandas as pd
 import openpyxl
+import numpy as np
 
 
 class IOData:
 
     @staticmethod
-    def get_data(sheet=0):
-        return pd.read_excel('data/input_data.xlsx', index_col=None, header=None, sheet_name=sheet).to_numpy()
+    def get_data():
+        xls = pd.ExcelFile('data/input_data.xlsx')
+        all_input = []
+        for name in xls.sheet_names:
+            all_input.append(pd.read_excel('data/input_data.xlsx', index_col=None, header=None, sheet_name=name).to_numpy())
+        return all_input
 
     @staticmethod
     def output_data(data1, data2, n):
@@ -53,8 +58,9 @@ class IOData:
 
 
 if __name__ == "__main__":
-    print(IOData.get_data(0))
+    a = IOData.get_data()
+    print(a[1])
     print(
-        IOData.output_data([[3, 3, 4], [4, 5, 6], [1, 2, 3], [5, 6, 4]],
-                           [[1, 0.7, 0.8], [1, 0.78, 0.89], [1, 0.75, 0.85], [1, 0.73, 0.887]],
+       IOData.output_data([[3, 3, 4], [4, 5, 6], [1, 2, 3], [5, 6, 4]],
+                          [[1, 0.7, 0.8], [1, 0.78, 0.89], [1, 0.75, 0.85], [1, 0.73, 0.887]],
                            [5, 10, 20, 30]))
