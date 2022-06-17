@@ -38,17 +38,23 @@ class Test:
                 z_iterations[1][j], time_iterations[1][j] = self.timer_func(BranchAndBound().solve, a, c)
                 z_iterations[2][j], time_iterations[2][j] = self.timer_func(ACO().solve, a, c)
                 print(z_iterations[:, j], time_iterations[:, j])
-            self.average_time[i] = [mean(time_iterations[0]), mean(time_iterations[0]), mean(time_iterations[0])]
-            self.average_z[i] = [mean(z_iterations[0]), mean(z_iterations[0]), mean(z_iterations[0])]
+                min_z = z_iterations[1][j]
+                for l in range(0, 3):
+                    z_iterations[l][j] -= min_z
+            # print("I's at "+str(i))
+            self.average_time[i] = [mean(time_iterations[0]), mean(time_iterations[1]), mean(time_iterations[2])]
+            self.average_z[i] = [mean(z_iterations[0]), mean(z_iterations[1]), mean(z_iterations[2])]
             i += 1
+        # print(self.average_time)
+        # print(self.average_z)
 
     def print_result(self):
         print(self.average_time)
         print(self.average_z)
 
     def graph_result(self):
-        Grapher.plot_time(self.average_time[0], self.average_time[1], self.average_time[2], self.R)
-        Grapher.plot_dev(self.average_z[0], self.average_z[1], self.average_z[2], self.R)
+        Grapher.plot_time(self.average_time[:, 0], self.average_time[:, 1], self.average_time[:, 2], self.R)
+        Grapher.plot_dev(self.average_z[:, 0], self.average_z[:, 1], self.average_z[:, 2], self.R)
 
 
 class Solver:

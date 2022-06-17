@@ -88,7 +88,7 @@ class Interface:
                         match option:
                             case 1:
                                 wait = False
-                                IOData.output_data(test.average_time, test.average_z, len(test.R))
+                                IOData.output_data(test.average_time, test.average_z, test.R)
                                 print("Результати збережено в "+os.getcwd()+"\data\output_data.xlsx")
                             case 2:
                                 wait = False

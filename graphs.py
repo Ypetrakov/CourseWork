@@ -8,6 +8,7 @@ class Grapher:
         plt.plot(R, res_1, label='Жадібний алгоритм')
         plt.plot(R, res_2, label='Метод гілок та меж')
         plt.plot(R, res_3, label='Алгоритм мурашиних колоній')
+        plt.yscale('log')
         # plt.xlim([0, ???])
         # plt.ylim([0, ???])
         plt.xlabel('Розмірність задачі')
