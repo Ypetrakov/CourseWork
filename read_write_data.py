@@ -8,11 +8,11 @@ import numpy as np
 class IOData:
 
     @staticmethod
-    def get_data():
-        xls = pd.ExcelFile('data/input_data.xlsx')
+    def get_data(location='data/input_data.xlsx'):
+        xls = pd.ExcelFile(location)
         all_input = []
         for name in xls.sheet_names:
-            all_input.append(pd.read_excel('data/input_data.xlsx', index_col=None, header=None, sheet_name=name).to_numpy())
+            all_input.append(pd.read_excel(location, index_col=None, header=None, sheet_name=name).to_numpy())
         return all_input
 
     @staticmethod
