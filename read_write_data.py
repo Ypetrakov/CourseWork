@@ -7,8 +7,8 @@ import openpyxl
 class IOData:
 
     @staticmethod
-    def get_data(sheet=0):
-        return pd.read_excel('data/input_data.xlsx', index_col=None, header=None, sheet_name=sheet).to_numpy()
+    def get_data(location="data/input_data.xlsx", sheet=0):
+        return pd.read_excel(location, index_col=None, header=None, sheet_name=sheet).to_numpy()
 
     @staticmethod
     def output_data(data1, data2, n):
@@ -53,7 +53,7 @@ class IOData:
 
 
 if __name__ == "__main__":
-    print(IOData.get_data(0))
+    print(IOData.get_data())
     print(
         IOData.output_data([[3, 3, 4], [4, 5, 6], [1, 2, 3], [5, 6, 4]],
                            [[1, 0.7, 0.8], [1, 0.78, 0.89], [1, 0.75, 0.85], [1, 0.73, 0.887]],

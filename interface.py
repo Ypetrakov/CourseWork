@@ -1,7 +1,10 @@
+import os
+
 import numpy as np
 
 from generator import Generator
-from main import Test, Solver
+from test import Test, Solver
+from read_write_data import IOData
 
 
 class Interface:
@@ -19,20 +22,6 @@ class Interface:
         print(results[1])
         print("Алгоритм мурашиних колоній:")
         print(results[2])
-
-        print("Зберегти результати в файл?")
-        self.print_menu({1: 'Так', 2: 'Ні'})
-        wait = True
-        option = int(input('Введіть ваш вибір: '))
-        while wait:
-            match option:
-                case 1:
-                    wait = False
-                    # Code for saving it somewhere
-                case 2:
-                    wait = False
-                case _:
-                    print("Оберіть одну з опцій.")
 
     def InitialUI(self):
         menu = {
@@ -72,12 +61,39 @@ class Interface:
 
                     self.solving((a, c))
                 case 3:
-                    print("Оберіть одну з опцій.")
-                    # Code for reading ingredients table from file
+                    print("Вкажіть розташування таблиці.")
+                    print("(Без вибору, буде зчитуватися з data/input_data.xlsx)")
+                    loc = input('Розташування таблиці: ')
+                    if loc == '':
+                        loc = 'data/input_data.xlsx'
+                    a = IOData.get_data(loc)
+                    
+                    print("Таблиця інгредієнтів:")
+                    print(a)
+                    c = Generator.get_c(a)
+                    print("Матриця відстаней:")
+                    print(c)
+
+                    self.solving((a, c))
                 case 4:
                     test = Test("initial_data")
                     test.start_experiment()
                     test.graph_result()
+
+                    print("Зберегти результати в файл?")
+                    self.print_menu({1: 'Так', 2: 'Ні'})
+                    wait = True
+                    option = int(input('Введіть ваш вибір: '))
+                    while wait:
+                        match option:
+                            case 1:
+                                wait = False
+                                IOData.output_data(test.average_time, test.average_z, len(test.R))
+                                print("Результати збережено в "+os.getcwd()+"\data\output_data.xlsx")
+                            case 2:
+                                wait = False
+                            case _:
+                                print("Оберіть одну з опцій.")
                 case 5:
                     return
                 case _:

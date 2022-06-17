@@ -1,12 +1,7 @@
 import random
-import time
-
 import generator
 from Algorithms.algorithm import Algorithm
 import numpy as np
-
-from Algorithms.branc_and_bound import BranchAndBound
-from Algorithms.greed import Greedy
 
 
 class ACO(Algorithm):
@@ -95,6 +90,4 @@ class ACO(Algorithm):
 if __name__ == "__main__":
     task = generator.Generator.generate_task(10)
     # print(task[0])
-    print(BranchAndBound().solve(task[0], task[1]))
-    print(Greedy().solve(task[0], task[1]))
     print(ACO().solve(task[0], task[1]))

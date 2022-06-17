@@ -25,7 +25,7 @@ class Greedy(Algorithm):
     def evaluate(x, c):
         sum = 0
         for i in range(1, len(x)):
-            sum += c[x[i-1]][x[i]]
+            sum += int(c[x[i-1]][x[i]])
         return sum
 
 
