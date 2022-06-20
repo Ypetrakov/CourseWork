@@ -1,3 +1,3 @@
 import interface
 
-interface.Interface().InitialUI()
+interface.Interface().initial_UI()

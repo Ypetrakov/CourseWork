@@ -23,7 +23,7 @@ class Interface:
         print("Алгоритм мурашиних колоній:")
         print(results[2])
 
-    def InitialUI(self):
+    def initial_UI(self):
         menu = {
             1: 'Згенерувати випадкову задачу',
             2: 'Ввести таблицю інгредієнтів вручну',
@@ -102,4 +102,4 @@ class Interface:
 
 if __name__ == '__main__':
     interface = Interface()
-    interface.InitialUI()
+    interface.initial_UI()

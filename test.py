@@ -45,8 +45,7 @@ class Test:
             self.average_time[i] = [mean(time_iterations[0]), mean(time_iterations[1]), mean(time_iterations[2])]
             self.average_z[i] = [mean(z_iterations[0]), mean(z_iterations[1]), mean(z_iterations[2])]
             i += 1
-        # print(self.average_time)
-        # print(self.average_z)
+        return self.average_time, self.average_z
 
     def print_result(self):
         print(self.average_time)
