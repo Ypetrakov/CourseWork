@@ -78,8 +78,8 @@ class BranchAndBound(Algorithm):
         for i in range(0, len(m)):
             for j in range(0, len(m[0])):
                 if m[i][j] == 0:
-                    p = min(np.concatenate((m[i, :j], m[i, j + 1:])))
-                    v = min(np.concatenate((m[:i, j], m[i + 1:, j])))
+                    p = min(np.delete(m[i], j))
+                    v = min(np.delete(m[:][j], i))
                     # If both p and v are Inf, this evaluates false
                     if (p + v) > w:
                         w = p + v
@@ -149,6 +149,6 @@ class BranchAndBound(Algorithm):
 if __name__ == '__main__':
     import generator
 
-    task = generator.Generator.generate_task(10)
+    task = generator.Generator.generate_task(15)
     print(task[1])
     print(BranchAndBound().solve(task[0], task[1]))
