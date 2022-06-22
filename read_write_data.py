@@ -27,8 +27,8 @@ class IOData:
         sheet.merge_cells('A1:A2')
         sheet.cell(row=1, column=1).value = "Кількість елементів"
         sheet.cell(row=1, column=2).value = "Середній час"
-        sheet.cell(row=2, column=2).value = "B&B"
-        sheet.cell(row=2, column=3).value = "Greed"
+        sheet.cell(row=2, column=2).value = "Greed"
+        sheet.cell(row=2, column=3).value = "B&B"
         sheet.cell(row=2, column=4).value = "ACO"
 
         sheet.column_dimensions['A'].width = 20
@@ -42,9 +42,9 @@ class IOData:
         sheet.merge_cells('G1:I1')
         sheet.merge_cells('F1:F2')
         sheet.cell(row=1, column=6).value = "Кількість елементів"
-        sheet.cell(row=1, column=7).value = "Точність"
-        sheet.cell(row=2, column=7).value = "B&B"
-        sheet.cell(row=2, column=8).value = "Greed"
+        sheet.cell(row=1, column=7).value = "Похибка"
+        sheet.cell(row=2, column=7).value = "Greed"
+        sheet.cell(row=2, column=8).value = "B&B"
         sheet.cell(row=2, column=9).value = "ACO"
 
         sheet.column_dimensions['F'].width = 20
