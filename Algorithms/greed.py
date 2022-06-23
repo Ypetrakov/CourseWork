@@ -1,3 +1,5 @@
+import numpy as np
+
 from Algorithms.algorithm import Algorithm
 
 
@@ -11,7 +13,7 @@ class Greedy(Algorithm):
         i = n
         while len(x) < n:
             def target_function(j):
-                return (K + 1) * c[i][j] + len(a[j])
+                return (K + 1) * c[i][j] + np.count_nonzero(a[j])
             x.append(i)
             k = min([j for j in range(0, n) if j not in x], key=target_function)
             i = k
