@@ -70,7 +70,7 @@ class Interface:
                     loc = input('Розташування таблиці: ')
                     if loc == '':
                         loc = 'data/input_data.xlsx'
-                    a = IOData.get_data(loc)
+                    a = IOData.get_data(loc)[0]
                     
                     print("Таблиця інгредієнтів:")
                     print(a)
