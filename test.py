@@ -41,6 +41,7 @@ class Test:
                 min_z = z_iterations[1][j]
                 for l in range(0, 3):
                     z_iterations[l][j] -= min_z
+                    z_iterations[l][j] = z_iterations[l][j] / min_z
             # print("I's at "+str(i))
             self.average_time[i] = [mean(time_iterations[0]), mean(time_iterations[1]), mean(time_iterations[2])]
             self.average_z[i] = [mean(z_iterations[0]), mean(z_iterations[1]), mean(z_iterations[2])]
