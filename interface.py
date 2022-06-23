@@ -53,8 +53,12 @@ class Interface:
                     for i in range(0, n):
                         print("Введіть номери інгредієнтів (від нуля) в " + str(i + 1) + "-му соці: ")
                         print("Приклад: 0 1 2 4 6")
-                        ings = input("Номери інгредієнтів: ").split(" ")
-                        a[i] = [int(x) for x in ings]
+                        ings = [int(x) for x in input("Номери інгредієнтів: ").split(" ")]
+                        for j in range(0, k):
+                            if j in ings:
+                                a[i][j] = 1
+                            else:
+                                a[i][j] = 0
                     c = Generator.get_c(a)
                     print("Матриця відстаней:")
                     print(c)
